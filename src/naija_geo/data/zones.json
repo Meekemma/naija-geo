@@ -1,0 +1,8 @@
+[
+  { "code": "NC", "name": "North Central" },
+  { "code": "NE", "name": "North East" },
+  { "code": "NW", "name": "North West" },
+  { "code": "SE", "name": "South East" },
+  { "code": "SS", "name": "South South" },
+  { "code": "SW", "name": "South West" }
+]

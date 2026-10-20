@@ -1,0 +1,94 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "naija-geo"
+version = "0.0.1"
+description = "Nigeria's geopolitical zones, 36 states + FCT and 774 LGAs, with Django and DRF support."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+authors = [{ name = "Emmanuel Ibeh", email = "ibehemmanuel32@gmail.com" }]
+keywords = ["nigeria", "states", "lga", "geopolitical zones", "django", "djangorestframework"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Framework :: Django",
+    "Framework :: Django :: 5.2",
+    "Framework :: Django :: 6.0",
+    "Framework :: Django :: 6.1",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+django = ["django>=5.2"]
+drf = ["django>=5.2", "djangorestframework>=3.16"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-django>=4.9",
+    "ruff>=0.6",
+    "mypy>=1.11",
+    "django>=5.2.18",
+    "djangorestframework>=3.18.3",
+    "django-stubs>=6.1.2",
+    "djangorestframework-stubs>=3.18.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/Meekemma/naija-geo"
+Repository = "https://github.com/Meekemma/naija-geo"
+Issues = "https://github.com/Meekemma/naija-geo/issues"
+Changelog = "https://github.com/Meekemma/naija-geo/blob/main/CHANGELOG.md"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/naija_geo"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/naija_geo", "tests", "README.md", "LICENSE", "CHANGELOG.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-ra", "--strict-markers", "--import-mode=importlib"]
+pythonpath = ["."]
+# Used by pytest-django; ignored (with the warning filtered) in core-only runs without it.
+DJANGO_SETTINGS_MODULE = "tests.settings"
+filterwarnings = ["ignore:Unknown config option. DJANGO_SETTINGS_MODULE"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+extend-exclude = ["*.md"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+# Django declares options as mutable class attributes (list_display, Meta.ordering, ...).
+ignore = ["RUF012"]
+
+[tool.ruff.lint.isort]
+# tests/django/ would otherwise make ruff treat Django as a first-party package.
+known-third-party = ["django"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src/naija_geo", "tests"]
+mypy_path = ["src", "."]
+explicit_package_bases = true
+plugins = ["mypy_django_plugin.main", "mypy_drf_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "tests.settings"
