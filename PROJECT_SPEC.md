@@ -335,7 +335,7 @@ Tooling: `pytest`, `pytest-django`, `tox` or `nox`, `ruff` and `mypy`.
 - [x] Scaffold the repo (`pyproject.toml`, `src/` layout, MIT license)
 - [x] Compile `zones.json` and `states.json` (with ISO codes and capitals)
 - [x] Compile `lgas.json` (774 entries with aliases)
-- [ ] Cross-check LGA spellings against official sources (INEC) and document them under "Data Sources"
+- [x] Cross-check LGA spellings against official sources (INEC) and document them under "Data Sources"
 - [x] Write the data integrity tests and get them passing **before** writing code (LGA checks skip until `lgas.json` exists)
 - [x] Core API and normalization
 - [x] Django models, migrations and the load command

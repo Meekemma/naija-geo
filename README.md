@@ -114,7 +114,8 @@ reused in your own views.
 ## Data Sources
 
 - **States, capitals, LGAs:** Constitution of the Federal Republic of Nigeria 1999 (as amended),
-  Section 3 and the First Schedule (Parts I & II). LGA spellings cross-checked against INEC's published lists.
+  Section 3 and the First Schedule (Parts I & II). LGA names cross-checked in October 2026 against
+  INEC's voter registration portal (cvr.inecnigeria.org); INEC's variant spellings are included as aliases.
 - **State codes:** ISO 3166-2:NG.
 - **Geopolitical zones:** The conventional six-zone grouping used by federal institutions (not constitutionally defined).
 - Alternate and historical spellings are recorded in each entry's `aliases`.
